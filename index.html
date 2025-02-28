@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favjpm.ico">
+    <title>My Home Profile</title>
+    <style>
+        body {
+            background: radial-gradient(circle, #1a1a2e, #16213e);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('future.gif');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: -2;
+        }
+         body::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0), transparent);
+            z-index: -1;
+        }
+          @keyframes smoke {
+            0% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-30px) translateX(20px); }
+            100% { transform: translateY(0px) translateX(0px); }
+          }
+        header {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px cyan;
+            position: relative;
+        }
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap");
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Montserrat", sans-serif;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    height: 100%;
+}
+
+.card {
+    position: relative;
+    height: 28rem;
+    width: 20rem;
+    aspect-ratio: 5/7;
+    color: #ffffff;
+    perspective: 50rem;
+}
+.card .shadow {
+    position: absolute;
+    inset: 0;
+    background: var(--url);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    filter: blur(2rem) saturate(0.9);
+    box-shadow: 0 -1.5rem 2rem -0.5rem rgba(0, 0, 0, 0.7);
+    transform: rotateX(var(--rotateX))
+                rotateY(var(--rotateY))
+                translate3d(0, 2rem, -2rem);
+}
+.card .image {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 40%), var(--url);
+    
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: var(--url);
+    mask-image: var(--url);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.card .image.background {
+    transform: rotateX(var(--rotateX)) 
+               rotateY(var(--rotateY)) 
+               translate3d(0, 0, 0rem);
+}
+
+.card .image.cutout {
+    transform: rotateX(var(--rotateX)) 
+               rotateY(var(--rotateY)) 
+               translate3d(0, 0, 4rem) 
+               scale(0.92);
+    z-index: 3;
+}
+
+.card .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    inset: 0;
+    padding: 3.5rem;
+    transform: rotateX(var(--rotateX)) 
+               rotateY(var(--rotateY)) 
+               translate3d(0, 0, 6rem);
+    z-index: 4;
+}
+
+.card::after, .card::before {
+    content: "";
+    position: absolute;
+    inset: 1.5rem;
+    border: #26C6DA 0.5rem solid;
+    transform: rotateX(var(--rotateX)) 
+               rotateY(var(--rotateY)) 
+               translate3d(0, 0, 2rem);
+}
+        .menu-toggle {
+            display: none;
+            background: cyan;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+        }
+        .menu-text {
+            position: absolute;
+            opacity: 0;
+            font-size: 14px;
+            color: cyan;
+            font-weight: bold;
+            transition: opacity 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+        .nav-links li:hover .menu-text {
+            opacity: 1;
+        }
+        .social-icons:hover .menu-text {
+            opacity: 1;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+            background: cyan;
+            box-shadow: 0 0 5px cyan;
+        }
+
+        .nav-links li:hover {
+            width: 200px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px cyan;
+        }
+
+        footer {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            bottom: 5;
+            left: 0;
+            font-size: 12px;
+            color: cyan;
+        }
+        .social-icons img {
+            width: 35px;
+            margin: 0 5px;
+            gap: 45px;
+            transform: translateY(0);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icons img:hover {
+            transform: translateY(-30px);
+            filter: drop-shadow(0 0 5px cyan);
+        }
+        .home-button {
+            margin-top: 800px;
+            padding: 10px 20px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        .home-button:hover {
+            background: #880E4F;       
+        }
+         @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 70%;
+                border-radius: 30px;
+                background: rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                display: none;
+                text-align: center;
+                z-index: 150;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                display: block;
+                padding: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle">☰</button>
+        <ul class="nav-links">
+            <li><a href="https://jmacaambac.github.io/aboutme/"><img src="about.png" width="30" alt="About"><span class="menu-text">About</span></a></li>
+            <li><a href="https://jmacaambac.github.io/jpmskills/"><img src="skills.png" width="30" alt="Skills"><span class="menu-text">Skills</span></a></li>
+            <li><a href="https://jmacaambac.github.io/jpmcareer/"><img src="career.png" width="30" alt="Career"><span class="menu-text">Career</span></a></li>
+            <li><a href="https://jmacaambac.github.io/mywebprofile/achievements.html"><img src="achieve.png" width="30" alt="Achievements"><span class="menu-text">Achieved</span></a></li>
+            <li><a href="https://jmacaambac.github.io/jpmgallery/"><img src="gallery.png" width="30" alt="Gallery"><span class="menu-text">Gallery</span></a></li>
+            <li><a href="https://www.raket.ph/raketship/products"><img src="business.png" width="30" alt="My Business"><span class="menu-text">Business</span></a></li>
+            <li><a href="https://drive.google.com/drive/folders/1rFNJBQ2YILCvsLM7S93YuR212mzpdwTe"><img src="project.png" width="30" alt="My Projects"><span class="menu-text">Projects</span></a></li>
+            <li><a href="https://jmacaambac.github.io/resume/"><img src="resume.png" width="30" alt="My Online Resume"><span class="menu-text">OL Resume</span></a></li>
+        </ul>
+                <span id="mute-btn" style="cursor: pointer; font-size: 24px;">🔇</span>
+    </header>
+
+    <main>
+        <div class="centered">
+    <div class="card border-left-behind">
+        <div class="shadow" style="--url: url('JPMwhite.png')"></div>
+        <div class="image background" style="--url: url('jade4.jpg')"></div>
+        <div class="image cutout" style="--url: url('JPMblank.png')"></div>
+        <div class="content" style="color: cyan;">
+            <h2></h2>
+            <p><i>JADE P. MACAAMBAC</i></p>
+        </div>
+    </div>
+    </main>
+
+        <div class="social-icons">
+            <a href="tel:+639666096060"><img src="contact me.png" alt="Call Me" style="margin-right:20px;"></a>
+            <a href="https://github.com/jmacaambac"><img src="github.png" alt="GitHub Profile" style="margin-right:20px;"></a>
+            <a href="https://www.upwork.com/freelancers/~0158ef1042186d12ba?mp_source=share"><img src="upwork.png" alt="Upwork Account" style="margin-right:20px;"></a>
+            <a href="https://www.facebook.com/JadePagalaranMacaambac"><img src="facebook.png" alt="My Facebook" style="margin-right:20px;"></a>
+            <a href="https://www.linkedin.com/in/jademacaambac?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BrMieWdntQ1GkHTaZgXDnyA%3D%3D"><img src="linkedin.png" alt="My LinkedIn" style="margin-right:20px;"></a>
+            <a href="mailto:jade.macaambac@outlook.com"><img src="email.png" alt="Send Me Email"></a>
+        </div>
+            <div>
+            <a href="https://jmacaambac.github.io/mywebprofile/" alt="classic" style="color: cyan; font-size: 12px;" class="home-button">BACK to CLASSIC LOOKS!</a>
+            </div>
+    <footer>
+        <div class="footer">&copy; 2025 JADE MACAAMBAC. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
+
+            menuToggle.addEventListener("click", function() {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("bg-music");
+        const muteBtn = document.getElementById("mute-btn");
+        audio.oncanplaythrough = function() {
+            console.log("Audio is ready to play!");
+            audio.muted = false;
+        };
+        muteBtn.addEventListener("click", function () {
+            if (audio) {
+                audio.muted = !audio.muted;
+                if (audio.muted) {
+                    muteBtn.textContent = "🔊";
+                } else {
+                    muteBtn.textContent = "🔇";
+                }
+                console.log("Audio muted status:", audio.muted);
+            }
+        });
+    });
+    </script>
+     <script>
+const angle = 20;
+const lerp = (start, end, amount) => (1 - amount) * start + amount * end;
+const remap = (value, oldMax, newMax) => Math.min(Math.max(((value * oldMax) + (newMax * 2)) / (oldMax * 2) - newMax, -newMax), newMax);
+
+let cards = [];
+
+window.addEventListener("DOMContentLoaded", () => {
+    cards = document.querySelectorAll(".card");
+    cards.forEach((e) => {
+        e.addEventListener("mousemove", (event) => {
+            const rect = e.getBoundingClientRect();
+            const centerX = (rect.left + rect.right) / 2;
+            const centerY = (rect.top + rect.bottom) / 2;
+            const posX = event.pageX - centerX;
+            const posY = event.pageY - centerY;
+            const x = remap(posX, rect.width / 2, angle);
+            const y = remap(posY, rect.height / 2, angle);
+            e.dataset.rotateX = x;
+            e.dataset.rotateY = -y;
+        });
+
+        e.addEventListener("mouseout", () => {
+            e.dataset.rotateX = 0;
+            e.dataset.rotateY = 0;
+        });
+    });
+});
+
+const update = () => {
+    cards.forEach((e) => {
+        let currentX = parseFloat(e.style.getPropertyValue("--rotateY") || "0");
+        let currentY = parseFloat(e.style.getPropertyValue("--rotateX") || "0");
+        const x = lerp(currentX, e.dataset.rotateX || 0, 0.85);
+        const y = lerp(currentY, e.dataset.rotateY || 0, 0.85);
+        e.style.setProperty("--rotateY", `${x}deg`);
+        e.style.setProperty("--rotateX", `${y}deg`);
+    });
+};
+
+setInterval(update, 1000 / 60);
+
+</script>
+     <audio id="bg-music" autoplay loop>
+    <source src="binarycode.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+     </audio>
+</body>
+</html>
