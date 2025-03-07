@@ -3,96 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple navigation menu with active state toggle.">
     <link rel="icon" type="image/x-icon" href="favjpm.ico">
     <title>My Compilation HTML</title>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css">
+
     <style>
       :root {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #d2dae2;
-    font-family: roboto;
-}
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #d2dae2;
+          font-family: roboto;
+      }
 
-.navigation {
-    position: relative;
-    width: 430px;
-    height: 70px;
-    background-color: #1e272e;
-    border-radius: 10px;
-}
+      .navigation {
+          position: relative;
+          width: 430px;
+          height: 70px;
+          background-color: #1e272e;
+          border-radius: 10px;
+      }
 
-.navigation ul {
-    display: flex;
-    width: 350px;
-}
+      .navigation ul {
+          display: flex;
+          width: 350px;
+      }
 
-.navigation ul li {
-    position: relative;
-    list-style: none;
-    width: 70px;
-    height: 70px;
-    z-index: 1;
-}
+      .navigation ul li {
+          position: relative;
+          list-style: none;
+          width: 70px;
+          height: 70px;
+          z-index: 1;
+      }
 
-.navigation ul li a {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
-}
-      </style>
+      .navigation ul li a {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+      }
+    </style>
 </head>
-      <body>
-<li class="list active">
-    <a href="#">
-        <span class="icon">
-            <ion-icon name="home-outline"></ion-icon>
-        </span>
-        <span class="text">Home</span>
-    </a>
-</li>
-<li class="list">
-    <a href="#">
-        <span class="icon">
-            <ion-icon name="book-outline"></ion-icon>
-        </span>
-        <span class="text">About</span>
-    </a>
-</li>
-<li class="list">
-    <a href="#">
-        <span class="icon">
-            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-        </span>
-        <span class="text">Contact Us</span>
-    </a>
-</li>
-<li class="list">
-    <a href="#">
-        <span class="icon">
-            <ion-icon name="settings-outline"></ion-icon>
-        </span>
-        <span class="text">Setting</span>
-    </a>
-</li>
-<li class="list"> ... etc </li>
-      </body>
-      <script>
-        const list = document.querySelectorAll('.list');
+<body>
 
-function active() {
-    list.forEach((item) => item.classList.remove('active'));
-    this.classList.add('active');
-}
+<div class="navigation">
+    <ul>
+        <li class="list active">
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="home-outline"></ion-icon>
+                </span>
+                <span class="text">Home</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="book-outline"></ion-icon>
+                </span>
+                <span class="text">About</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                </span>
+                <span class="text">Contact Us</span>
+            </a>
+        </li>
+        <li class="list">
+            <a href="#">
+                <span class="icon">
+                    <ion-icon name="settings-outline"></ion-icon>
+                </span>
+                <span class="text">Setting</span>
+            </a>
+        </li>
+    </ul>
+</div>
 
-list.forEach((item) => item.addEventListener('click', active));
-        
-      </script>
+<script>
+    const list = document.querySelectorAll('.list');
+
+    function active() {
+        list.forEach((item) => item.classList.remove('active'));
+        this.classList.add('active');
+    }
+
+    list.forEach((item) => item.addEventListener('click', active));
+</script>
+
+</body>
 </html>
