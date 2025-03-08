@@ -37,6 +37,7 @@
             align-items: center;
             border-radius: 50px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+            transition: 0.3s ease-in-out;
         }
 
         .navigation ul {
@@ -58,6 +59,22 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        .hover-circle {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: #007bff;
+            border-radius: 50%;
+            top: -35px;
+            left: 0;
+            transition: transform 0.3s ease-in-out;
+            display: none;
+            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .navigation ul li a {
             text-decoration: none;
             color: white;
@@ -65,68 +82,49 @@
             flex-direction: column;
             align-items: center;
             transition: 0.3s;
+            position: relative;
         }
 
         .navigation ul li .icon {
             font-size: 24px;
-            transition: transform 0.3s ease-in-out, background-color 0.3s;
-            position: relative;
-            padding: 10px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s;
+            position: absolute;
+            padding: 15px;
             border-radius: 50%;
             background: #1e272e;
             z-index: 2;
         }
 
-        /* Hover Effect - Rise Up and Slide Sideways */
         .navigation ul li:hover .icon {
-            transform: translateY(-30px);
-            background: #007bff;
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
-        }
-
-        .navigation ul li:hover ~ li .icon {
-            transform: translateX(15px);
-        }
-        .navigation ul li:hover ~ li + li .icon {
-            transform: translateX(30px);
-        }
-
-        /* Floating Effect for Active Button */
-        .navigation ul li.active {
-            transform: translateY(-30px);
-        }
-
-        .navigation ul li.active .icon {
-            background: #007bff;
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
+            transform: translateY(-50px);
+            background: transparent;
+            opacity: 0;
         }
 
         .navigation ul li .text {
-            font-size: 12px;
-            margin-top: 5px;
-            opacity: 0.7;
+            opacity: 0;
+            transition: opacity 0.3s;
+            position: absolute;
+            bottom: -20px;
+            font-size: 14px;
         }
 
-        /* Container separation effect */
-        .navigation::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            height: 10px;
-            background: #1e272e;
-            border-radius: 50px;
-            z-index: 1;
+        .navigation ul li:hover .text {
+            opacity: 1;
+        }
+
+        .hover-circle ion-icon {
+            font-size: 24px;
+            color: white;
         }
     </style>
 </head>
 <body>
 
 <div class="navigation">
+    <div class="hover-circle" id="hoverCircle"><ion-icon id="hoverIcon"></ion-icon></div>
     <ul>
-        <li class="list">
+        <li class="list" data-index="0">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
@@ -134,7 +132,7 @@
                 <span class="text">Home</span>
             </a>
         </li>
-        <li class="list">
+        <li class="list" data-index="1">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="book-outline"></ion-icon>
@@ -142,7 +140,7 @@
                 <span class="text">About</span>
             </a>
         </li>
-        <li class="list">
+        <li class="list" data-index="2">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="chatbox-ellipses-outline"></ion-icon>
@@ -150,7 +148,7 @@
                 <span class="text">Contact Us</span>
             </a>
         </li>
-        <li class="list">
+        <li class="list" data-index="3">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="settings-outline"></ion-icon>
@@ -158,7 +156,7 @@
                 <span class="text">Setting</span>
             </a>
         </li>
-        <li class="list">
+        <li class="list" data-index="4">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="person-outline"></ion-icon>
@@ -170,14 +168,28 @@
 </div>
 
 <script>
-    const list = document.querySelectorAll('.list');
+    const listItems = document.querySelectorAll('.list');
+    const hoverCircle = document.getElementById('hoverCircle');
+    const hoverIcon = document.getElementById('hoverIcon');
 
-    function active() {
-        list.forEach((item) => item.classList.remove('active'));
-        this.classList.add('active');
+    function activateItem(event) {
+        const index = Array.from(listItems).indexOf(this);
+        const iconRect = this.querySelector('.icon').getBoundingClientRect();
+        const navRect = document.querySelector('.navigation').getBoundingClientRect();
+        const offsetX = iconRect.left - navRect.left;
+        const iconName = this.querySelector('ion-icon').getAttribute('name');
+
+        hoverCircle.style.display = 'flex';
+        hoverCircle.style.transform = `translateX(${offsetX}px)`;
+        hoverIcon.setAttribute('name', iconName);
     }
 
-    list.forEach((item) => item.addEventListener('click', active));
+    function resetCircle() {
+        hoverCircle.style.display = 'none';
+    }
+
+    listItems.forEach((item) => item.addEventListener('mouseenter', activateItem));
+    document.querySelector('.navigation').addEventListener('mouseleave', resetCircle);
 </script>
 
 </body>
