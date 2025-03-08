@@ -55,6 +55,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: transform 0.3s;
         }
 
         .navigation ul li a {
@@ -84,22 +85,13 @@
 
         /* Floating Effect for Active Button */
         .navigation ul li.active {
-            position: absolute;
-            top: -40px;
-            background: #007bff;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s;
+            transform: translateY(-20px);
         }
 
         .navigation ul li.active .icon {
+            background: #007bff;
             color: white;
-            font-size: 28px;
+            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
         }
 
         .navigation ul li .text {
@@ -130,7 +122,7 @@
                 <span class="text">About</span>
             </a>
         </li>
-        <li class="list active">
+        <li class="list">
             <a href="#">
                 <span class="icon">
                     <ion-icon name="chatbox-ellipses-outline"></ion-icon>
