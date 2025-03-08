@@ -3,162 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curved Navigation Bar</title>
-
-    <!-- Ionicons Library -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css">
-
+    <link rel="icon" type="image/x-icon" href="favjpm.ico">
+    <title>My Compilation HTML</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
+      :root {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #d2dae2;
+    font-family: roboto;
+}
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #d2dae2;
-        }
+.navigation {
+    position: relative;
+    width: 430px;
+    height: 70px;
+    background-color: #1e272e;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
 
-        .navigation {
-            position: fixed;
-            bottom: 20px;
-            width: 400px;
-            background: #1e272e;
-            padding: 15px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-radius: 50px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-        }
+.navigation::before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    width: 80px;
+    height: 40px;
+    background-color: #d2dae2;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
 
-        .navigation ul {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none;
-            position: relative;
-        }
+.navigation ul {
+    display: flex;
+    width: 350px;
+    justify-content: space-around;
+}
 
-        .navigation ul li {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s;
-        }
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
 
-        .navigation ul li a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: 0.3s;
-        }
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
 
-        .navigation ul li .icon {
-            font-size: 24px;
-            transition: transform 0.3s, background-color 0.3s;
-            position: relative;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        /* Hover Effect - Icon Rises */
-        .navigation ul li:hover .icon {
-            transform: translateY(-20px);
-            background: #007bff;
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
-        }
-
-        /* Floating Effect for Active Button */
-        .navigation ul li.active {
-            transform: translateY(-20px);
-        }
-
-        .navigation ul li.active .icon {
-            background: #007bff;
-            color: white;
-            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
-        }
-
-        .navigation ul li .text {
-            font-size: 12px;
-            margin-top: 5px;
-            opacity: 0.7;
-        }
-
+.list.active {
+    position: absolute;
+    top: -20px;
+    background-color: #0095ff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
     </style>
 </head>
 <body>
+    <div class="navigation">
+        <ul>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </span>
+                    <span class="text">About</span>
+                </a>
+            </li>
+            <li class="list active">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                    </span>
+                    <span class="text">Contact Us</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                    <span class="text">Setting</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        const list = document.querySelectorAll('.list');
 
-<div class="navigation">
-    <ul>
-        <li class="list">
-            <a href="#">
-                <span class="icon">
-                    <ion-icon name="home-outline"></ion-icon>
-                </span>
-                <span class="text">Home</span>
-            </a>
-        </li>
-        <li class="list">
-            <a href="#">
-                <span class="icon">
-                    <ion-icon name="book-outline"></ion-icon>
-                </span>
-                <span class="text">About</span>
-            </a>
-        </li>
-        <li class="list">
-            <a href="#">
-                <span class="icon">
-                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-                </span>
-                <span class="text">Contact Us</span>
-            </a>
-        </li>
-        <li class="list">
-            <a href="#">
-                <span class="icon">
-                    <ion-icon name="settings-outline"></ion-icon>
-                </span>
-                <span class="text">Setting</span>
-            </a>
-        </li>
-        <li class="list">
-            <a href="#">
-                <span class="icon">
-                    <ion-icon name="person-outline"></ion-icon>
-                </span>
-                <span class="text">Profile</span>
-            </a>
-        </li>
-    </ul>
-</div>
+        function active() {
+            list.forEach((item) => item.classList.remove('active'));
+            this.classList.add('active');
+        }
 
-<script>
-    const list = document.querySelectorAll('.list');
-
-    function active() {
-        list.forEach((item) => item.classList.remove('active'));
-        this.classList.add('active');
-    }
-
-    list.forEach((item) => item.addEventListener('click', active));
-</script>
-
+        list.forEach((item) => item.addEventListener('click', active));
+    </script>
 </body>
 </html>
