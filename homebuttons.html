@@ -38,6 +38,7 @@
             border-radius: 50px;
             box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
             transition: 0.3s ease-in-out;
+            clip-path: circle(85% at 50% 100%);
         }
 
         .navigation ul {
@@ -47,6 +48,7 @@
             align-items: center;
             list-style: none;
             position: relative;
+            padding: 0;
         }
 
         .navigation ul li {
@@ -74,6 +76,7 @@
             opacity: 0;
             pointer-events: none;
             box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
+            border: 5px solid white; /* Added white stroke */
         }
 
         .navigation ul li a {
@@ -94,6 +97,8 @@
             border-radius: 50%;
             background: #1e272e;
             z-index: 2;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .navigation ul li:hover .icon {
@@ -122,11 +127,11 @@
 </head>
 <body>
 
-<div class="navigation">
+<div class="navigation" id="navBar">
     <div class="hover-circle" id="hoverCircle"><ion-icon id="hoverIcon"></ion-icon></div>
     <ul>
         <li class="list" data-index="0">
-            <a href="#">
+            <a href="index.html">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
                 </span>
@@ -172,10 +177,11 @@
     const listItems = document.querySelectorAll('.list');
     const hoverCircle = document.getElementById('hoverCircle');
     const hoverIcon = document.getElementById('hoverIcon');
+    const navBar = document.getElementById('navBar');
 
     function activateItem(event) {
         const iconRect = this.querySelector('.icon').getBoundingClientRect();
-        const navRect = document.querySelector('.navigation').getBoundingClientRect();
+        const navRect = navBar.getBoundingClientRect();
         const offsetX = iconRect.left - navRect.left;
         const iconName = this.querySelector('ion-icon').getAttribute('name');
 
@@ -189,7 +195,7 @@
     }
 
     listItems.forEach((item) => item.addEventListener('mouseenter', activateItem));
-    document.querySelector('.navigation').addEventListener('mouseleave', resetCircle);
+    navBar.addEventListener('mouseleave', resetCircle);
 </script>
 
 </body>
